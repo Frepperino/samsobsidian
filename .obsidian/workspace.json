@@ -35,11 +35,9 @@
             "id": "abeecea50bd9132e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Atomfysik/F5 - Lasrar.md",
-                "mode": "source",
-                "source": false
+                "file": "Atomfysik/Images/Pasted image 20231221115126.png"
               }
             }
           }
@@ -110,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Atomfysik/F5 - Lasrar.md",
+                "file": "Atomfysik/Images/Pasted image 20231221115126.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Atomfysik/F5 - Lasrar.md",
+                "file": "Atomfysik/Images/Pasted image 20231221115126.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Atomfysik/F5 - Lasrar.md"
+                "file": "Atomfysik/Images/Pasted image 20231221115126.png"
               }
             }
           }
@@ -171,19 +169,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "abeecea50bd9132e",
+  "active": "69f2d3ae42e1d4fb",
   "lastOpenFiles": [
     "README.md",
+    "Atomfysik/F5 - Lasrar.md",
     "Atomfysik/F4 - Övergångar och linjebredder.md",
     "Atomfysik/F3 - Vågfunktioner i väte.md",
     "Atomfysik/F2 - Bohrs atommodell, vätelika atomer.md",
     "Atomfysik/F1 - Inledande koncept.md",
-    "F12 - Heliumatomen.md",
+    "Atomfysik/F12 - Heliumatomen.md",
     "Atomfysik/F11 - Hyperfinstruktur.md",
-    "Pasted image 20231221115323.png",
-    "Pasted image 20231221115237.png",
-    "Pasted image 20231221115217.png",
-    "Pasted image 20231221115126.png",
+    "Atomfysik/Images/Pasted image 20231221115323.png",
+    "Atomfysik/Images/Pasted image 20231221115237.png",
+    "Atomfysik/Images/Pasted image 20231221115217.png",
+    "Atomfysik/Images/Pasted image 20231221115126.png",
     "Atomfysik/F10 - Finstruktur.md",
     "Atomfysik/F9 - LS-koppling.md",
     "Atomfysik/F8 - Rörelsemängdsmoment.md",
@@ -201,7 +200,6 @@
     "Indek",
     "Atomfysik",
     "Untitled 1.md",
-    "Atomfysik/F5 - Lasrar.md",
     "Atomfysik/F6 - Centralfältsapproximation.md"
   ]
 }
