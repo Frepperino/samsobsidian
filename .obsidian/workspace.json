@@ -20,6 +20,62 @@
             }
           },
           {
+            "id": "edb0c8c912692782",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Atomfysik/F12 - Heliumatomen.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ae6aba8baed59278",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Test.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2c2e9fa3ec35a870",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Atomfysik/Images/Pasted image 20231222164337.png"
+              }
+            }
+          },
+          {
+            "id": "6a7eab4717ab2b54",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Atomfysik/Images/Pasted image 20231222180645.png"
+              }
+            }
+          },
+          {
+            "id": "4d03b491c38d55b8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Atomfysik/F10 - Finstruktur.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "308c97c65c4355df",
             "type": "leaf",
             "state": {
@@ -30,19 +86,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "abeecea50bd9132e",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Atomfysik/Images/Pasted image 20231221115126.png"
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -108,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Atomfysik/Images/Pasted image 20231221115126.png",
+                "file": "Atomfysik/F10 - Finstruktur.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Atomfysik/Images/Pasted image 20231221115126.png",
+                "file": "Atomfysik/F10 - Finstruktur.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Atomfysik/Images/Pasted image 20231221115126.png"
+                "file": "Atomfysik/F10 - Finstruktur.md"
               }
             }
           }
@@ -169,33 +215,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "69f2d3ae42e1d4fb",
+  "active": "4d03b491c38d55b8",
   "lastOpenFiles": [
-    "README.md",
+    "Atomfysik/F7 - Röntgenspektra och alkaliatomer.md",
     "Atomfysik/F5 - Lasrar.md",
-    "Atomfysik/F4 - Övergångar och linjebredder.md",
-    "Atomfysik/F3 - Vågfunktioner i väte.md",
-    "Atomfysik/F2 - Bohrs atommodell, vätelika atomer.md",
     "Atomfysik/F1 - Inledande koncept.md",
-    "Atomfysik/F12 - Heliumatomen.md",
+    "Atomfysik/Images/Pasted image 20231222164337.png",
+    "Atomfysik/Images/Pasted image 20231222180645.png",
+    "Atomfysik/F15 - Kalla atomer.md",
+    "Atomfysik/Images/Pasted image 20231222175512.png",
+    "Atomfysik/Images/Pasted image 20231222174353.png",
+    "Atomfysik/F13, F14 - Externa fält.md",
     "Atomfysik/F11 - Hyperfinstruktur.md",
-    "Atomfysik/Images/Pasted image 20231221115323.png",
-    "Atomfysik/Images/Pasted image 20231221115237.png",
-    "Atomfysik/Images/Pasted image 20231221115217.png",
-    "Atomfysik/Images/Pasted image 20231221115126.png",
+    "Atomfysik/Images/Pasted image 20231222171114.png",
+    "Atomfysik/Images/Pasted image 20231222165845.png",
+    "Atomfysik/Images/Pasted image 20231222165824.png",
+    "Atomfysik/Images/Pasted image 20231222164359.png",
+    "Atomfysik/Images/Pasted image 20231222164354.png",
+    "Test.md",
+    "Atomfysik/Images/Pasted image 20231222155609.png",
+    "Atomfysik/F12 - Heliumatomen.md",
     "Atomfysik/F10 - Finstruktur.md",
     "Atomfysik/F9 - LS-koppling.md",
+    "README.md",
+    "Atomfysik/F3 - Vågfunktioner i väte.md",
+    "Atomfysik/F2 - Bohrs atommodell, vätelika atomer.md",
+    "Atomfysik/F4 - Övergångar och linjebredder.md",
     "Atomfysik/F8 - Rörelsemängdsmoment.md",
     "Indek/F11 - Bokföring och redovisning.md",
-    "Indek/Images/Pasted image 20231207164727.png",
     "Anteckningar inför Monopol.md",
-    "Indek/Images/Pasted image 20231207170123.png",
-    "Atomfysik/Images/Pasted image 20231219115143.png",
     "Indek/Images",
-    "Atomfysik/Images/Pasted image 20231219145544.png",
-    "Atomfysik/Images/Pasted image 20231219123613.png",
-    "Atomfysik/Images/Pasted image 20231219123527.png",
-    "Atomfysik/F7 - Röntgenspektra och alkaliatomer.md",
     "Atomfysik/Images",
     "Indek",
     "Atomfysik",

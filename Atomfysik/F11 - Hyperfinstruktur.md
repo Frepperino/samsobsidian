@@ -10,7 +10,7 @@ Båda effekter ger små skiften i spektrallinjernas våglängder mellan olika is
 **Hyperfinstruktur**
 Hyperfinstrutkur kommer ifrån växelverkan mellan den magnetiska dipolen från *kärnans spinn* och magnetfältet från elektronerna.
 $$\Delta E_{hyperfine} = -\mu_{nucleus} \cdot B_{electron}$$
-De flesta kärnor innehar spin, $I$, kvantiserat genom $|I|^2 = I(I+1)\hbar^2$. I kan ta heltal- eller halvtalsvärden.
+De flesta kärnor innehar spin, $I$, kvantiserat genom $|I|^2 = I(I+1)\hbar^2$. I kan ta heltal- eller halvtalsvärden. För varje neutron ökar spinnet med $1/2$ medan det minskar med $1/2$ för varje proton.
 
 Magnetiska dipolmomentet för en kärna är analogt med elektronen,
 $$\mu_{nucleus}=g_I\frac{\mu_N}{\hbar}I$$
