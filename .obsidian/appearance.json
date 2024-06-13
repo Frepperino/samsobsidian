@@ -4,5 +4,7 @@
     "defaultimagesize"
   ],
   "translucency": false,
-  "nativeMenus": false
+  "nativeMenus": false,
+  "baseFontSize": 25,
+  "theme": "moonstone"
 }

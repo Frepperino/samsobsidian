@@ -4,91 +4,199 @@
     "type": "split",
     "children": [
       {
-        "id": "f75bcf579d6829c0",
+        "id": "6fe0cef5181f8d78",
         "type": "tabs",
         "children": [
           {
-            "id": "edbf5b732389a35a",
+            "id": "ec6d57b84ed7f10d",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.8"
+              }
+            }
+          },
+          {
+            "id": "898dfaf64d4da2d0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atomfysik/F10 - Finstruktur.md",
+                "file": "3an/T2/Hållut/F1.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "edb0c8c912692782",
+            "id": "b024332c458c946a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atomfysik/F12 - Heliumatomen.md",
+                "file": "3an/T2/Algodat/F1.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "ae6aba8baed59278",
+            "id": "a4b8a714a631b9b8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Test.md",
+                "file": "3an/T2/Algodat/F2.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "2c2e9fa3ec35a870",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Atomfysik/Images/Pasted image 20231222164337.png"
-              }
-            }
-          },
-          {
-            "id": "6a7eab4717ab2b54",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Atomfysik/Images/Pasted image 20231222180645.png"
-              }
-            }
-          },
-          {
-            "id": "4d03b491c38d55b8",
+            "id": "99e94e82dbf60ad2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atomfysik/F10 - Finstruktur.md",
+                "file": "3an/T2/Algodat/F2.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "308c97c65c4355df",
+            "id": "e4c26cbb4b7cb44b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Atomfysik/F11 - Hyperfinstruktur.md",
+                "file": "3an/T2/Algodat/F2.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "43ffe957e1674b48",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.12"
+              }
+            }
+          },
+          {
+            "id": "c0a019a52ad6bc80",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Kapitel 2.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "63b4a4c9eb8b32e8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/F2.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4c4b5b06f2209c6d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/F3.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1e096999df1d7873",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/F4.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7550f3aefe6862c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/Answers.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "056b954c4f69bc7b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/Begrepp.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6e03feddb744de18",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/Begrepp.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "50846786123c84a5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/Answers.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "51838bf5a1989c66",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "3an/T2/Algodat/Algoritmer.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 15
       }
     ],
     "direction": "vertical"
@@ -154,7 +262,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Atomfysik/F10 - Finstruktur.md",
+                "file": "3an/T2/Algodat/Algoritmer.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +279,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Atomfysik/F10 - Finstruktur.md",
+                "file": "3an/T2/Algodat/Algoritmer.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -194,7 +302,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Atomfysik/F10 - Finstruktur.md"
+                "file": "3an/T2/Algodat/Algoritmer.md"
               }
             }
           }
@@ -215,40 +323,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4d03b491c38d55b8",
+  "active": "51838bf5a1989c66",
   "lastOpenFiles": [
-    "Atomfysik/F7 - Röntgenspektra och alkaliatomer.md",
-    "Atomfysik/F5 - Lasrar.md",
-    "Atomfysik/F1 - Inledande koncept.md",
-    "Atomfysik/Images/Pasted image 20231222164337.png",
-    "Atomfysik/Images/Pasted image 20231222180645.png",
-    "Atomfysik/F15 - Kalla atomer.md",
-    "Atomfysik/Images/Pasted image 20231222175512.png",
-    "Atomfysik/Images/Pasted image 20231222174353.png",
-    "Atomfysik/F13, F14 - Externa fält.md",
-    "Atomfysik/F11 - Hyperfinstruktur.md",
-    "Atomfysik/Images/Pasted image 20231222171114.png",
-    "Atomfysik/Images/Pasted image 20231222165845.png",
-    "Atomfysik/Images/Pasted image 20231222165824.png",
-    "Atomfysik/Images/Pasted image 20231222164359.png",
-    "Atomfysik/Images/Pasted image 20231222164354.png",
-    "Test.md",
-    "Atomfysik/Images/Pasted image 20231222155609.png",
-    "Atomfysik/F12 - Heliumatomen.md",
-    "Atomfysik/F10 - Finstruktur.md",
-    "Atomfysik/F9 - LS-koppling.md",
+    "3an/T2/Algodat/Begrepp.md",
+    "3an/T2/Algodat/Answers.md",
+    "3an/T2/Algodat/Algoritmer.md",
+    "Pasted image 20240612213125.png",
+    "3an/T2/Algodat/Inför muntan.md",
+    "3an/T2/Algodat/Images/Pasted image 20240319095455.png",
+    "3an/T2/Algodat/Tips.md",
+    "Pasted image 20240321102157.png",
+    "Untitled.md",
+    "3an/T2/Algodat/F4.md",
+    "3an/T2/Algodat/F3.md",
+    "3an/T2/Algodat/F2.md",
+    "Instudering Allmänt.md",
+    "Kapitel 2.md",
+    "3an/T2/Algodat/F1.md",
+    "LEAPFROGS/Pasted image 20240118161740.png",
+    "LEAPFROGS/LEAPFROGS.md",
+    "Pasted image 20240321141618.png",
+    "Pasted image 20240321141344.png",
+    "Pasted image 20240321141254.png",
+    "Pasted image 20240321135459.png",
+    "Pasted image 20240321105704.png",
+    "Pasted image 20240321104740.png",
+    "3an/T2/Algodat/Images",
+    "3an/T2/Algodat",
+    "3an/T2/Hållut/F1.md",
     "README.md",
-    "Atomfysik/F3 - Vågfunktioner i väte.md",
-    "Atomfysik/F2 - Bohrs atommodell, vätelika atomer.md",
-    "Atomfysik/F4 - Övergångar och linjebredder.md",
-    "Atomfysik/F8 - Rörelsemängdsmoment.md",
+    "3an/T2/FTF/F1 - Introduktion.md",
+    "Kapitel 5.md",
+    "LEAPFROGS",
+    "3an/T2/Hållut",
+    "FTF",
+    "3an/T1/Atomfysik/F12 - Heliumatomen.md",
+    "3an",
+    "3an/T2",
+    "3an/T1",
     "Indek/F11 - Bokföring och redovisning.md",
-    "Anteckningar inför Monopol.md",
-    "Indek/Images",
-    "Atomfysik/Images",
-    "Indek",
-    "Atomfysik",
-    "Untitled 1.md",
-    "Atomfysik/F6 - Centralfältsapproximation.md"
+    "3an/T1/Atomfysik/F4 - Övergångar och linjebredder.md",
+    "3an/T1/Atomfysik/F9 - LS-koppling.md",
+    "3an/T2/FTF",
+    "3an/T1/Atomfysik/F11 - Hyperfinstruktur.md",
+    "3an/T1/Atomfysik/F13, F14 - Externa fält.md",
+    "3an/T1/Atomfysik/F10 - Finstruktur.md",
+    "3an/T1/Atomfysik/F8 - Rörelsemängdsmoment.md",
+    "3an/T1/Atomfysik/F7 - Röntgenspektra och alkaliatomer.md",
+    "Indek/Images"
   ]
 }

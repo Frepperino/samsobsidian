@@ -1,0 +1,1 @@
+För att bevisa, ta ett litet exempel.
