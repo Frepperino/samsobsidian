@@ -1,4 +1,6 @@
 {
   "promptDelete": false,
-  "spellcheck": false
+  "spellcheck": false,
+  "readableLineLength": false,
+  "attachmentFolderPath": "Attachments"
 }

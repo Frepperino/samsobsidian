@@ -4,211 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "6fe0cef5181f8d78",
+        "id": "192033c5165353d1",
         "type": "tabs",
         "children": [
           {
-            "id": "ec6d57b84ed7f10d",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.5.8"
-              }
-            }
-          },
-          {
-            "id": "898dfaf64d4da2d0",
+            "id": "aa7035b137d1c48b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3an/T2/Hållut/F1.md",
+                "file": "TSA/Lectures - Time Series Analysis.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "b024332c458c946a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/F1.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "a4b8a714a631b9b8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/F2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "99e94e82dbf60ad2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/F2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e4c26cbb4b7cb44b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/F2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "43ffe957e1674b48",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.5.12"
-              }
-            }
-          },
-          {
-            "id": "c0a019a52ad6bc80",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Kapitel 2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "63b4a4c9eb8b32e8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/F2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4c4b5b06f2209c6d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/F3.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "1e096999df1d7873",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/F4.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7550f3aefe6862c7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/Answers.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "056b954c4f69bc7b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/Begrepp.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6e03feddb744de18",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/Begrepp.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "50846786123c84a5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/Answers.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "51838bf5a1989c66",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/Algoritmer.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4060c9dec5c670d8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3an/T2/Algodat/Algoritmer.md",
-                "mode": "source",
-                "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Lectures - Time Series Analysis"
             }
           }
-        ],
-        "currentTab": 16
+        ]
       }
     ],
     "direction": "vertical"
@@ -227,8 +40,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -243,7 +59,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -251,7 +69,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -274,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3an/T2/Algodat/Algoritmer.md",
+                "file": "Modelleing & Learning from Data/Lecture 4.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -282,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Lecture 4"
             }
           },
           {
@@ -291,10 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3an/T2/Algodat/Algoritmer.md",
+                "file": "Modelleing & Learning from Data/Lecture 4.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Lecture 4"
             }
           },
           {
@@ -305,7 +129,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -314,8 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "3an/T2/Algodat/Algoritmer.md"
-              }
+                "file": "Modelleing & Learning from Data/Lecture 4.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Lecture 4"
             }
           }
         ]
@@ -327,6 +155,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -335,53 +164,52 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4060c9dec5c670d8",
+  "active": "aa7035b137d1c48b",
   "lastOpenFiles": [
-    "3an/T2/Algodat/Answers.md",
-    "3an/T2/Algodat/Inför muntan.md",
-    "3an/T2/Algodat/Algoritmer.md",
-    "3an/T2/Algodat/Begrepp.md",
-    "Pasted image 20240612213125.png",
-    "3an/T2/Algodat/Images/Pasted image 20240319095455.png",
-    "3an/T2/Algodat/Tips.md",
-    "Pasted image 20240321102157.png",
-    "Untitled.md",
-    "3an/T2/Algodat/F4.md",
-    "3an/T2/Algodat/F3.md",
-    "3an/T2/Algodat/F2.md",
-    "Instudering Allmänt.md",
-    "Kapitel 2.md",
-    "3an/T2/Algodat/F1.md",
-    "LEAPFROGS/Pasted image 20240118161740.png",
-    "LEAPFROGS/LEAPFROGS.md",
-    "Pasted image 20240321141618.png",
-    "Pasted image 20240321141344.png",
-    "Pasted image 20240321141254.png",
-    "Pasted image 20240321135459.png",
-    "Pasted image 20240321105704.png",
-    "Pasted image 20240321104740.png",
-    "3an/T2/Algodat/Images",
-    "3an/T2/Algodat",
-    "3an/T2/Hållut/F1.md",
+    "TSA/Mini lectures - TSA.md",
+    "Spatial Statistics/Lectures.md",
+    "Medical Image Analysis/Lectures - Medical Image Analysis.md",
+    "TSA/Lectures - Time Series Analysis.md",
+    "Attachments/Pasted image 20251113150457.png",
+    "Attachments/Pasted image 20251113145944.png",
+    "Attachments/Pasted image 20251113145841.png",
+    "Attachments/Pasted image 20251113145821.png",
+    "Attachments/Pasted image 20251113145728.png",
+    "Attachments/Pasted image 20251113145633.png",
+    "Attachments/Pasted image 20251113145607.png",
+    "Attachments/Pasted image 20251113144933.png",
+    "Attachments/Pasted image 20251113144903.png",
+    "Attachments/Pasted image 20251113144838.png",
+    "Numerical Linear Algebra/Notes.md",
+    "Modelleing & Learning from Data/Lectures.md",
+    "Attachments",
+    "French vocab.md",
+    "Spatial Statistics",
+    "Untitled 1.base",
+    "Medical Image Analysis",
+    "Untitled.base",
+    "Numerical Linear Algebra/Todo NLA.md",
+    "TSA",
+    "Numerical Linear Algebra/Questions for Numerical Linear Algebra.md",
+    "OASP/Stuff to know.md",
+    "OASP/Notes from book OASP.md",
+    "OASP/Last day OASP.md",
+    "OASP/Note from lecs.md",
+    "Plan tentap.md",
+    "Numerical Linear Algebra/Overview NLA.md",
     "README.md",
-    "3an/T2/FTF/F1 - Introduktion.md",
-    "Kapitel 5.md",
-    "LEAPFROGS",
-    "3an/T2/Hållut",
-    "FTF",
-    "3an/T1/Atomfysik/F12 - Heliumatomen.md",
-    "3an",
-    "3an/T2",
-    "3an/T1",
-    "Indek/F11 - Bokföring och redovisning.md",
-    "3an/T1/Atomfysik/F4 - Övergångar och linjebredder.md",
-    "3an/T1/Atomfysik/F9 - LS-koppling.md",
-    "3an/T2/FTF",
-    "3an/T1/Atomfysik/F11 - Hyperfinstruktur.md",
-    "3an/T1/Atomfysik/F13, F14 - Externa fält.md",
-    "3an/T1/Atomfysik/F10 - Finstruktur.md",
-    "3an/T1/Atomfysik/F8 - Rörelsemängdsmoment.md",
-    "3an/T1/Atomfysik/F7 - Röntgenspektra och alkaliatomer.md",
-    "Indek/Images"
+    "OASP",
+    "Numerical Linear Algebra",
+    "A&P/10 Muscles.md",
+    "A&P/25 Urinary System.md",
+    "A&P/23 Digestive System.md",
+    "A&P/22 Respiratory System.md",
+    "A&P/19 Heart.md",
+    "A&P/17 Endocrine.md",
+    "A&P/11 Muscular System.md",
+    "A&P/9 Joints.md",
+    "A&P/4 Tissues.md",
+    "Modelleing & Learning from Data",
+    "A&P/Images"
   ]
 }
