@@ -20,8 +20,37 @@
               "icon": "lucide-file",
               "title": "Lectures - Time Series Analysis"
             }
+          },
+          {
+            "id": "6b925a2c599af3d1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TSA/Mini lectures - TSA.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Mini lectures - TSA"
+            }
+          },
+          {
+            "id": "9f91220808d14422",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TSA/Lectures - Time Series Analysis.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Lectures - Time Series Analysis"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -164,26 +193,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "aa7035b137d1c48b",
+  "active": "9f91220808d14422",
   "lastOpenFiles": [
     "TSA/Mini lectures - TSA.md",
-    "Spatial Statistics/Lectures.md",
-    "Medical Image Analysis/Lectures - Medical Image Analysis.md",
+    "Attachments/Pasted image 20251126090201.png",
     "TSA/Lectures - Time Series Analysis.md",
+    "Spatial Statistics/Lectures.md",
+    "Rika Tillsammans.md",
+    "Medical Image Analysis/Lectures - Medical Image Analysis.md",
+    "Attachments/Pasted image 20251119171734.png",
+    "Attachments/Pasted image 20251119171629.png",
+    "Attachments/Pasted image 20251119171513.png",
+    "Attachments/Pasted image 20251119171219.png",
+    "Attachments/Pasted image 20251119164415.png",
+    "Attachments/Pasted image 20251119164105.png",
+    "French vocab.md",
     "Attachments/Pasted image 20251113150457.png",
     "Attachments/Pasted image 20251113145944.png",
     "Attachments/Pasted image 20251113145841.png",
-    "Attachments/Pasted image 20251113145821.png",
-    "Attachments/Pasted image 20251113145728.png",
-    "Attachments/Pasted image 20251113145633.png",
-    "Attachments/Pasted image 20251113145607.png",
-    "Attachments/Pasted image 20251113144933.png",
-    "Attachments/Pasted image 20251113144903.png",
-    "Attachments/Pasted image 20251113144838.png",
     "Numerical Linear Algebra/Notes.md",
     "Modelleing & Learning from Data/Lectures.md",
     "Attachments",
-    "French vocab.md",
     "Spatial Statistics",
     "Untitled 1.base",
     "Medical Image Analysis",
@@ -208,7 +238,6 @@
     "A&P/17 Endocrine.md",
     "A&P/11 Muscular System.md",
     "A&P/9 Joints.md",
-    "A&P/4 Tissues.md",
     "Modelleing & Learning from Data",
     "A&P/Images"
   ]

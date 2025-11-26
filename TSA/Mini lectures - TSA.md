@@ -458,4 +458,211 @@ Mini Lecture 20 - Prediction Error Method (PEM)
 		  $\hat{\sigma}_{e}^{2}=\frac{1}{N-p}\sum_{t=p+1}^N\epsilon_{t}^{2}(\theta,\sigma_{e}^{2})$
 		  $\hat{\theta}_{ML}=\arg\min_{\theta}=\sum_{t=p+1}^N\epsilon_{t}^{2}(\theta,\sigma_{e}^{2})$, which coincides with the PEM estimate
 			- Simply. $\hat{\theta}_{ML}=\hat{\theta}_{PEM}$ if it is an ARMA process.
-	- ML estimator generally gives the best performance, as it gives the lowest possible variance of any unbiased estimator. However, in many practical application it is not feasible to estimate. 
+	- ML estimator generally gives the best performance, as it gives the lowest possible variance of any unbiased estimator. However, in many practical application it is not feasible to estimate.
+
+Mini Lecture 21 - Model order estimation
+- We form an estimate of the residual variance $S_{\theta}(l)=\sum_{t}\lvert y_{t}-\hat{y}_{t|t-1}(\hat{\theta}_{l}) \rvert^{2}$, where $l$ is the assumed model order.
+	- $\hat{\theta}_{l}$ is an ML parameter estimate
+	-  In a noiseless case we will reach a 0 variance for an ML parameter estimate for a model with sufficient order.
+	- With noise we cannot explain the signal fully so the residual variance wont fully disappear, as we'll try to describe noise, and we'll overfit as we the residual variance still diminishes. Thus we cannot just look after what minimizes $S_{\theta}$, so we add a penalty.
+	- For the generalized information criteria (GIC), one adds $\alpha_{l,N}$ to $S_{\theta}(l)$ where,
+	  $\alpha_{l,N}=2l$ for AIC
+	  $\alpha_{l,N}=l \ln N$ for BIC
+	  $\alpha_{l,N}=3l$ for KIC
+	  $\hat{l}=\arg\min_{l}\text{GIC}(l)$
+	  $\text{GIC}(l)=N\ln \hat{\sigma}_{e,l}^{2}+\alpha_{l,n}$
+		- These calculations are made with loads of assumption making them often not that suitable.
+		- In general:
+			- AIC tends to overfit aka too high model order estimate.
+			- BIC, is consistent with enough data. But with finite data it tends to underfit.
+				- Thus you could look at both AIC and BIC to find something inbetween.
+	- MatLab uses final prediction error (FPE), $\text{FPE}(l)=\hat{\sigma}_{e,l}^{2} \frac{1+l / N}{1 - l / N} \approx \hat{\sigma}_{e,l}^{2} (1+ \frac{2l}{N})$
+	- We can extend this into several model orders for ARMA by setting $l=p+q$.
+		- Just replace in each function $l$ with $p+q$. This gives a bowl in 2D, whose bottom fives $\hat{p},\hat{q}$.
+	- Have the following mindset:
+		- Model order estimation is difficult especially with small N.
+		- No reliable algorithm, treat all with scepticism.
+		- At best, the algorithms give a feel for an appropriate order, at worst, they indicate something completely wrong.
+		- Do not rely on model order estimates!
+
+Mini Lecture 22 - Residual analysis
+- Is the residual white?
+- There are a number of tests:
+	- Testing the ACF and PACT:
+		- Plot and eyeball!
+			- What we've done so far
+		- All of these assume ACF is Gaussian distributed, not that the data is Gaussian distributed!
+		- The Box-Pierce test
+			- Here we quantify the plot and eyeball.
+			- $Q=N\sum_{l=1}^K\hat{\rho}_{e}^{2}(l) \in \chi^{2}(K)$
+				- $K$ is the number of considered correlations.
+				- Asymptotically Normal distributed squared gives $\chi^2$ distribution
+			- With significance $\alpha$ we reject the hypothesis that the residual is white if $Q > \chi_{1-\alpha}^{2}(K)$
+				- $\chi_{1-\alpha}^{2}(K)$ is the $\alpha$-quantile of the $\chi^{2}$-distribution with K degrees of freedom.
+					- K is typically 10-25 as we want some averaging but not the scary higher order lags.
+			- Unreliable of small amount of data
+		- The Ljung-Box-Pierce test
+			- We adjust Box-Pierce to work with smaller amounts of data.
+			- Thus we scale it, $Q^*=N(N+2)\sum_{l=1}^K \frac{\hat{\rho}_{e}^{2}(l)}{N-l} \in \chi^{2}(K)$.
+			- See lbpTest
+		- The McLead-Li test
+			- Same as Ljung-Box-Pierce but the residual is squared
+			- $Q^*=N(N+2)\sum_{l=1}^K \frac{\hat{\rho}_{e^{2}}^{2}(l)}{N-l} \in \chi^{2}(K)$
+			- Not very reliable as it depends strongly on Gaussian distribution assumption
+			- DONT USE!
+		- The Monti test
+			- Same as Ljung-Box-Pierce but we look at the PACF
+			- $Q_{M}=N(N+2)\sum_{l=1}^K \frac{\hat{\phi}_{l,l}^{2}}{N-l} \in \chi^{2}(K)$
+			- See montiTest
+	- Testing the cumulative periodogram
+		- Sum the periodogram up to some frequency. If it is flat, then it should be a straight line, but if it has some structure it should have some bounces out of the straight line.
+		- See plotCumPer
+	- Testing sign changes
+		- Counting sign changes $P$.
+		- Should be Bernoulli distribution with enough data, $P \in \mathcal{B}\left( N-1, \frac{1}{2} \right)$
+			- For large datasets P may be well approximated as Normal distributed $P \in \mathcal{N}\left(  N-\frac{1}{2}, N - \frac{1}{4} \right)$
+		- See countSignChanges.
+	- All tests are collected in the function whitenessTest
+	- Don't do several tests to see if you pass one test. Pick one and then trust it.
+	- The tests on ACF and PACF assume they are Normal distributed.
+		- To test this:
+			- We can use skewness (asymmetry) and kurtosis (peakiness) to determine if it is Gaussian
+			- $S=\text{skewness}=\text{3rd moment} / \text{std}^{3}$ (This is 0 for a Gaussian)
+			- $K = \text{kurtosis} = \text{4th moment} / std^4$ (This is 3 for a Gaussian)
+			- The Jarque-Berra test evaluates S and K as $\gamma_{JB}=\frac{N}{6}\left( \hat{S}^{2}+\frac{1}{4}(\hat{K}-3)^{2} \right) \in \chi^{2}(2)$.
+				- See jbtest
+			- However, for small samples, D'Agostino-Pearson K$^{2}$ test is often preferable
+				- See dagostinoK2test
+			- We can also use normplot or the provided plotNTdist (which also checks T distribution.)
+				- We want to see that we do not have bounces in the middle. We can also see if it seems to fit a T distribution better.
+					- If it seems to be T distributed (with a certain amount of scepticism for this test itself) trust the tests above less.
+
+Mini Lecture 23 - Linear prediction
+- We weight a sum of earlier observations $\hat{y}_{t+k|t}=\sum_{l=0}^nw_{l}y_{t-l}$
+	- For a Gaussian process this is the optimal predictor.
+- We select the weights using the orthogonality principle.
+	- Our range space is the observed space so we project the prediction down to our space of observations.
+	- Alternatively we can form a cost function which is the variance of the prediction $\mathcal{C}=V[y_{N+k}-\hat{y}_{N+k|N}]=C[y_{N+k}-\hat{y}_{N+k|N},y_{N+k}]=V[y_{N+k}]-\sum_{l=0}^Nw_{l}C[y_{N-l},y_{N+k}]$
+- Predicting ARMA:
+	- $A(z)y_{t}=C(z)e_{t}$
+	- Reordering gives $y_{t+k}=F(z)e_{t+k}+\sum_{l=0}^\infty \psi_{l}e_{t-l}$, where $F(z)$ is the future weights for value we do not know.
+	- $F(z)=1+f_{1}z^{-1}+\dots+f_{k-1}z^{-k+1}$
+	- We define $\sum_{l=0}^\infty \psi_{l}e_{t-l}=\frac{G(z)}{A(z)}e_{t}=z^{-k} \frac{G(z)}{A(z)}e_{t+k}$, where $A(z)$ is the same as before.
+	- We can solve $G$ and $F$ by the Diophantine equation $C(z)=A(z)F(z)+z^{-k}G(z)$
+		- ord(F(z))=k-1
+		- ord(G(z))=max(p-1,q-k)
+		- since we know C(z) on the LHS we can just match to figure out each coefficient.
+		- we can also just do $\frac{C(z)}{A(z)}$ via polynomial division, where the coefficients for terms in the future (0,1,...,k-1) constitute F and coefficients beyond are for timepoints known, thus constituting G.
+			- In practice, we let MatLab do this polynomial division.
+	- Now for the prediction we use as we've formed before $\hat{y}_{t+k|t}(\Theta)=E[y_{k+1}|\Theta],\Theta=[\theta^T,Y_{t}^T]^T$
+		- Since we know the functions and we don't know $e_{t+k}$ as its in the future we'll just get,
+		  $\hat{y}_{t+k|t}(\Theta)=\frac{G(z)}{C(z)}y_{t}$
+		- Thus the prediction error is $\epsilon_{t+k|T}(\Theta)=F(z)e_{t+k}$
+			- This means the prediction error should behave as an MA(k-1) process
+			- $V[\epsilon_{t+k|t}(\Theta)]=(1+f_{1}^{2}+\dots+f_{k-1}^{2})\sigma_{e}^{2}$
+				- Thus the variance increases with increasing k.
+				- Therefore, for a Normal distributed process the $1-\alpha$ confidence prediction interval can be expressed as,
+				  $\hat{y}_{t+k|t} \pm u_{\alpha / 2}\sigma_{e} \sqrt{ 1 + f_{1}^{2} + \dots + f_{k-1}^{2} }$
+					- $u_{\alpha / 2}$ denotes the $\alpha / 2$ quantile.
+	- Example: SARIMA
+		- S adds that many laggs to our p order for A(z)
+		- Our F order is how many lags forward - 1
+		- Our G order is max(p-1,q-1)
+		- Polynomial division
+	- A **hint** that a prediction model is good is that the prediction error is truly an MA(k-1)
+	- For a lot of models we cannot make a prediction model for some big k with a good prediction error. Because our assumptions may be too strong, or there is some seasonality that changes the data.
+	- We can use the difference between our prediction model and a true value when some event has happened e.g. Covid to deduce (with some variance) how many deaths should have been compared to have many where, to see how many statistically additionally died.
+
+Mini Lecture 24 - Predicting signals with input
+- We now do the same but with ARMAX, remember $A(z)y_{t}=B(z)x_{t}+C(z)e_{t}$
+- Some algebra gives us $\frac{F(z)B(z)}{C(z)}x_{t+k}=\hat{F}(z)x_{t+k}+\frac{\hat{G}(z)}{C(z)}x_{t}$ where $\hat{F},\hat{G}$ are the part that we can divide and  the part we cannot. This is the same procedure as we did above with $\frac{C(z)}{A(z)}$.
+- ord($\hat{F}$)=k-1
+  ord($\hat{G}$)=max(q-1,s-1)
+- We get: $y_{t+k}=F(z)e_{t+k}+\frac{F(z)B(z)}{C(z)}x_{t+k}+\frac{G(z)}{C(z)}y_{t}=F(z)e_{t+k}+\hat{F}(z)x_{t+k}+\frac{\hat{G}(z)}{C(z)}x_{t}+\frac{G(z)}{C(z)}y_{t}$.
+	- $F(z)$ is future noise, $\hat{F}(z)$ is our future input, $\frac{G(z)}{C(z)}$ is our classic ARMA prediction
+	- We might be able to predict the future input signals..., but ofc not the noise
+- Prediction: $\hat{y}_{t+k|t}(\Theta)=E[y_{t+k}|\Theta]=\hat{F}(z)E[x_{t+k}|\Theta]+\frac{\hat{G}(z)}{C(z)}x_{t}+\frac{G(z)}{C(z)}y_{t}$
+	- Where we may be able to predict the input signal
+	- This is the first stage of our prediction, as we need to attempt to predict our input before can predict the output.
+- Prediction error: $\epsilon_{t+k|t}(\Theta)=F(z)e_{t+k}+\hat{F}(z)x_{t+k}$
+	- The second term is if we could not predict the input signal
+- Box-Jenkins case:
+	- $y_{t}=\frac{C_{1}(z)}{A_{1}(z)}e_{t}+\frac{B(z)}{A_{2}(z)}x_{t-d}$
+	- We can rewrite this as ARMAX, $A_{1}(z)A_{2}(z)y_{t}=A_{2}(z)C_{1}(z)e_{t}+A_{1}(z)B(z)z^{-d}x_{t}$
+	- From here one we can just solve it as above.
+		- See mini lecture for details.
+
+Mini Lecture 25 - Multivariate processes
+- m dimensional (m different sources) stochastic process $\mathbf{z_{t}}=[z_{t,1},\dots,z_{t,m}]$
+	- $\mathbf{m_{z}}=E[\mathbf{z}_{t}]=[E[z_{t,1}],\dots,E[z_{t,m}]]$
+	- covariance function is now a matrix, $\mathbf{R_{z}}(k)=C[\mathbf{z_{t},z_{t-k}}]=E[\mathbf{(z_{t}-m_{z})(z_{t-k}-m_{z})}^*]$
+		- $\mathbf{R_{z}}(k)=\mathbf{R_{z}}^*(-k)$
+		- Noise is temporaly white if $\mathbf{R_{z}}(k)=\Sigma_{z}$ for $k=0$ and $0$ otherwise.
+		- Spatially white (uncorrelated among sources) if $\mathbf{\Sigma_{z}=I}$
+		- If both, it is called double white.
+- Multivariate, or vector, ARMAX = VARMAX
+	- $\mathbf{A(z)y_{t}=B(z)x_{t-d}+C(z)e_{t}}$
+		- Where A and C are monic mxm matrix polynomials of order p and q, and B is a m x s matrix polynomial of order r,
+		  $\mathbf{A(z)}=\mathbf{I}+\mathbf{A_{1}}z^{-1}+\dots+\mathbf{A_{p}}z^{-p}$
+		  $\mathbf{B(z)}=\mathbf{B_{0}}+\mathbf{B_{1}}z^{-1}+\dots+\mathbf{B_{r}}z^{-r}$
+		  $\mathbf{C(z)}=\mathbf{I}+\mathbf{C_{1}}z^{-1}+\dots+\mathbf{C_{q}}z^{-q}$
+		- $\mathbf{e_{t}}$ is a zero-mean white noise process with variance $\mathbf{\Sigma_{e}}$
+		- To ensure stability, we require that all roots of $\det[\mathbf{A}(z)]=0$, with respect to z, lie within the unit circle
+	- Example:
+		- Notice that for k=1 and -1 the matrix multiplication order is siwtched.
+	- Autocorrelation function, $\mathbf{\rho_{z}}(k)=\mathbf{P_{z}}^{-1 / 2}\mathbf{R_{z}}(k)\mathbf{P_{z}}^{-1 / 2}$
+		- where $\mathbf{P_{z}}=diag(\mathbf{R_{z}(0)_{1,1},\dots,R_{z}(0)_{m,m}})$
+			- I.e. a the matrix $\mathbf{R_{z}}(0)$ with with zeroes outside the diagonal
+		- A thing we can do is compare each element with the confidence interval and fill a matrix with - if it is outside the negative interval +, if it is outside the positive interval and . if it is inside the interval.
+		- We can still use the ACF and PACF for identification!
+			- PACF is calculated using the multivariate Yule-Walker.
+	- vec and Kronecker product
+		- vec takes the columns and stacks them from col 1 to m
+		- vec product takes each of the elements of the first matrix and multiplies it with the second matrix, stacking it the same way as the first matrix.
+		- $\text{vec}[\mathbf{ABC}]=(\mathbf{C}^T\otimes \mathbf{A})\text{vec}[\mathbf{B}]$
+		- This simplifies the calculations for e.g. $\mathbf{R_{y}}$ a lot 
+
+Mini lecture 26 - Multivariate identification
+- Multivariate estimation:
+	- Analogous to the univariate case
+	- $\mathbf{\hat{m}}_{y}=\frac{1}{N}\sum^{N}_{t=1}\mathbf{y_{t}}$
+	- (biased) autocovariance function, $\mathbf{\hat{R}_{y}}(k)=\frac{1}{N}\sum^{N}_{t=k+1}(\mathbf{y_{t}}-\mathbf{\hat{m}_{y}})(\mathbf{y_{t-k}}-\mathbf{\hat{m}_{y}})^*$
+		- ACF then becomes $\mathbf{\hat{\rho}_{y}}(k)=\mathbf{\hat{P}_{y}}^{-1 / 2}\mathbf{\hat{R}_{y}}(k)\mathbf{\hat{P}_{y}}^{-1 / 2}$
+	- Example: We can also use the least squares formulation for an ARX(p) process
+		- $\mathbf{y_{t}+A_{1}y_{t-1}+\dots+A_{p}y_{t-p}}=\mathbf{B_{0}x_{t}+\dots+B_{r}x_{t-r}+e_{t}}$
+		  $\mathbf{y_{t}^*=-\sum^p_{k=1}y^*_{t-k}A_{k}^*+\sum^r_{k=0}x^*_{t-k}B_{k}^*+e_{t}^*}=\mathbf{X_{t}^*\theta+e_{t}^*}$
+			- where $\mathbf{X_{t}^*}=[\mathbf{-y_{t-1}^*,\dots,-y_{t-p}^*,x_{t-1}^*,\dots,x_{t-r}^*}]$
+			  $\mathbf{\theta}=[\mathbf{A_{1},\dots, A_{p},B_{0},\dots,B_{r}}]$
+		- Or further, describing all time points possible (t needs to be p+1 to accomodate for using p past values),
+		  ![[Pasted image 20251126090201.png|450px]]
+		- This assumes $p \geq r$ due to full rank constraint needed for inverse.
+		- This gives the LS parameter estimate $\mathbf{\hat{\theta}}=\mathbf{(X^*X)^{-1}X^*Y}$
+			- If $\mathbf{\phi=\text{vec}\{\mathbf{\theta}\}}$, then $V[\mathbf{\hat{\phi}}]=\mathbf{\Sigma\otimes(X^*X)^{-1}}$
+	- Maximum likelihood version:
+		- This gives us $\mathbf{\hat{\theta}_{ML}}=\arg\min_{\theta}\text{tr}(\mathbf{\Sigma^{-1}\hat{D}_{\theta}})$
+			- $\mathbf{\hat{D}_{\theta}}=\frac{1}{N}\sum_{t=1}^N(\mathbf{y_{t}-X\theta)(y_{t}-X\theta)^T}$, is an estimate of $\mathbf{\Sigma}$
+			- Thus we minimize the difference between the true covariance matrix and the estimate.
+		- Now, we also say that $\mathbf{\Sigma}$ might be unknown:
+			- $\{ \mathbf{\hat{\theta}_{ML},\hat{\Sigma}} \}=\arg\min_{\theta}\ln(\det(\mathbf{\hat{D}_{\theta}}))$
+				- I.e. we try to minimize the residual variance.
+			- This is a difficult cost function due to many dimensions.
+			- This can happen even in the univariate case with PEM, where you can get weird results like poles on the unit circle, or the A parameters are 1. This means we've ended up in a local minima. To fix this we can change the initialization.
+		- Here we say $\mathbf{Y}=[\mathbf{y_{1},\dots,y_{N}}]$
+	- Estimation of the covariance matrix of the residual with model order p,
+	  $\mathbf{\hat{\Sigma}_{p}}=\frac{1}{N-p}(\mathbf{Y-X_{p}^*\hat{\theta}_{p})^*(Y-X_{p}^*\hat{\theta}_{p})}=\frac{\mathbf{Y^*\Pi_{\perp X_{p}}Y}}{N-p}$
+	- Example VAR(2):
+		- First we check if transform is necessary. Do this by checking both inputs individually, but do a joint decision if possible, not just one.
+		- Same with detrending(?)
+			- He doesn't say if it's the same idea with transforming both.
+		- Estimate ACF and PACF, and do the +,-, . matrices.
+		- Do the multivariate Jarque-Bera test to see if ACF and PACF are normal distirbuted.
+		- Now, model order selection shows that the tests Q*,Mp,AIC,BIC,FPE all have their MINIMUM at p=2, suggesting AR(2).
+		- The results aren't that close to the truve values, despite 2x1000 samples. Estimating multivariate processes is hard.
+			- Thus we often just do low order AR-based models.
+	- Example muskrats and minks:
+		- Plotting ACF shows that it goes two dots in the matrices  but after some bigger k it goes to signifcant again => ringing, not MA
+		- PACF instead shows that it goes to insignificant and stays there.
+		- When selecting p for PACF, we still consider it significant if just 1 value out of the 4 in the dot matrix is significant, however as always we take it slow and take the obvious orders first, AR(1), then extend.
+		- We get completely different answers on our model selection p from Q*, Mp, AIC, BIC and FPE. But looking at the data for AR(2) it follows VERY tightly, except for the beginning with initial conditions (which is something an AR process has as a transient to learning the behavior). So one could even say it almost overfits.
+		- The point is that with multivariate processes, the model order selection is tricky and the variances in the estimated parameters are high, so we need a GOOD reason to use multiple processes for a model instead of multiple inputs.
+		- HOWEVER, there are situation where there is an interdependence, e.g. temperature between Svedala and Sturup. Here one is not an input to the other, so we want to model them jointly. In this case we would take care of the trends, structures and cycles separately and then model them together!

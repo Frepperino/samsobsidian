@@ -88,6 +88,45 @@ Lecture 7:
 	- Be aware when running PEM that it doesn't exclude some coefficients, otherwise use PEB(?)
 	- Look at Ex. 5.18, it is the entire story so far of modeling.
 		- Also at 5.22
-- Linear prediction:
-	- $\hat{y}_{t+l|t}(\theta)$
-	- For a normal process $\hat{y}_{t+l|t}(\theta)=\sum_{k=0}^nw_{k}y_{t-k}+c$, how do
+
+Lecture 8:
+- For an ARMA process to have functioning predictions we need its roots inside the unit circle since we predict by $y_{t|t+l}=\frac{G(z)}{C(z)}y_{t}$.
+	- If this happens, we can find the reciprocal zero for the unit circle, which will give the same. Just remember to change the conjugate too.
+- Residual of the prediction has an ACF showing its an MA(l-1) process.
+	- We might see some ringing with coefficients outside the significance bound, however, this is to be expected, we'll even see it if we use the true polynomials of the process, without estimation. 
+- We check if our predictor is good by comparing to the naive predictor, $\hat{y}_{t+l}=y_{t}$.
+	- For longer prediction we want to use maybe some periodicity like $\hat{y}_{t+12}=y_{t+12-24}$ if it's 24 hour periodic.
+- Our predictions will be very bad if ... is close to the center
+- We only compare $l$ step predictions with $l$ step predictions, because otherwise they aren't comparable. We do this with the validation set by predicting, giving one point into the validation set, predicting, giving another, and so on ...
+	- We do this as part of getting samples of predictions to calculate variance and compare methods.
+- If you really struggle to create something better than the naive solution, simulate some data with the same characteristics. If your model can't predict that well, it may just be that the pattern is inherently hard to predict.
+- Code14.m
+- When we calculate a k-step prediction with $\hat{y}_{t+k|t}=\frac{G(z)}{C(z)}y_{t}$ we may end up with something like $\hat{y}_{t+k|t}(1+c_{7}z^{-7})=G(z)y_{t}$ ($C(z)=1+c_{7}z^{-7}$), which has a term $\hat{y}_{y+k-7|t}$. At this point we either already know that value if $k\leq 7$, otherwise we first need to do a $k-7$ step prediction to insert before we can do our $k$ step prediction.
+- No matter what, we should at some point simulate the data with A LOT of data points to see where the limit with regards to dataset size is. how predictable is the dataset?
+
+Lecture 9:
+- Have that preust delft painting as the cover
+- COPY THE CODE FOR PREDICTION, very convoluted stuff
+- When doing k-step prediction, for big k we won't use the small lag coefficients, we will only use the big seasonal coefficients. Thus if we look at increasing variance, at some point it will only depend on the big lag coefficients. So if we want a long range predictor we want it to be simple.
+- If you get weird results from the C1/A1 solution, it might thus actually be worth trying to compute KC/KA instead!
+
+Ask why he mentions covariance of residuals matrix?? When have we used that otherwise???
+
+
+
+23*15
+46*15
+18
+15
+17*5
+
+1153
+
+Elin
+Albin
+Elina Elina
+
+jag 384 kr cid flak
+260 kr
+276 kr
+430 kr

@@ -400,6 +400,219 @@
 			- Can be solved using Dijkstras
 
 **Lecture 5 - Segmentation II (Active Shape Models)**
-
+- Active Contours
+	- We define a contour that moves over time (iterations) and is driven by external and internal forces
+	- It aims to minimize a critera with external energy (fit to interesting structures) vs internal energy (regularizes the contour)
+	- We parameterise the contour $V(s)=[x(s),y(s)]$
+	- Minimization criterion $E[v(s)]=\int _{S} \frac{1}{2}(\alpha \lvert v'(s) \rvert^{2}+ \beta \lvert v''(s) \rvert^{2}) + E_{ext}(v(s)) \, dx$
+		- Examples of external energies,
+			- $E_{ext} = - \lvert \nabla I(x,y) \rvert^{2}$
+			- $E_{ext}=-\lvert \nabla G_{\sigma}(x,y)*I(x,y) \rvert^{2}$
+	- Practical aspects:
+		- Need to specify $\alpha,\beta$
+			- They determine the trade-off between internal and external energy as well as the weighting between first and second order derivatives (obviously)
+		- The problem is variational since we minize an expression that depends on a function $v(s)$
+	- Solution:
+		- Euler-Langrage equations gives, $\alpha v''(s)-\beta v^{(4)}(s)-\nabla E_{ext}(v(s))=0$
+		- Hard to solve, so we use trick, Dynamic snaker - Active contour
+		  $v_{t}(s,t)=\alpha v''(s,t)-\beta v^{4}(s,t)-\nabla E_{ext}(v(s,t))$
+			- If we find a stationary solution i.e. LHS=0 then we have a solution!
+		- NOTE: we say $v_{t}$ is time derivative and $v'$ is spatial derivative.
+		- Numerically we solve this by discretization:
+			- $\delta =\frac{1}{\Delta T}$, $v_{t}=\frac{x_{k}^{n+1}-x_{k}^n}{\Delta t}$,$v'=\frac{x_{k+1}^n-x_{k}^n}{h}$
+			- Discretization gives, ![[Pasted image 20251119164105.png]]
+			- With the linear system of equations in x,
+			  $A+\delta Ix^n=x^{n-1}-f_{x}(x^{n-1},y^{n-1})$
+				- $x$ is a vector with all spatial coordinates
+		- Pseudo Algorithm:
+			- Start with an initial contour (inside or outside the object)
+			- Calculate the parameterization using arclength
+			- Propagate the contour one step basd on solving the linear systems of equations
+			- Re-parameterize if needed
+			- Continue until convergence
+		- ![[Pasted image 20251119164415.png]]
+		- Initialization from inside and outside can yield different results depending on how the structures look.
+		- The issue with active contours is that they may get stuck with concave/indented shapes, we can solve this with Gradient Vector Flows:
+			- The GVF makes edges influence the whole image with force, compared to the standrad which only influences with force.
+- Contour evolution:
+	- We have a moving curve, that moves according to some rule to minimize an energy or similar.
+	- It has:
+		- L = local properties
+		- G = global properties
+		- I = independent properties
+		- F = speed function
+			- Depends on image intensities, image derivatives, local curvature, etc.
+			- It has to be carefully selected and adapted to the application
+	- Fast marching methods:
+		- Assume F>0 (contour only moves outwards)
+		- We introduce a new image T(x,y) where T denotes the arrival time of the contour
+		- The contour at time T is the collection of points with arrival time = T
+		- We start with distance = rate * time in one dimension:
+		  $dx=FdT\to 1=FT'(x)$
+		- In several dimensions we use the Eikonal equation,
+		  $\lvert \nabla T \rvert F=1$, $T=0$ at initial location
+		- Pseudo algortihm:
+			1. Start with initial contour (known points)
+			2. Compute T for all neighbours to the contour (trial points)
+			3. Add the point in trial with the smallest T to known
+			4. Update T for all neighbors not in known and add to trial
+			5. Repeat 3-4 until all points are in known
+	- Level Set Methods:
+		- Model the contour as the level set to a 3D-function $\Psi$, i.e $\Psi(x(t),t)=c$ (usually $c=0$), $\mathbf{x}(t)=(x(t),y(t))$
+		- We differentiate with respect to t,
+		  $\Psi_{t}+\nabla \Psi(x(t),t)x'(t)=0$
+		- Outward normal is $n= \frac{\nabla \Psi}{\lvert \nabla \Psi \rvert}$
+		- We assume that the speed is normal to the level set $F=x'(t)n$
+		- Allowing a rewrite $\Psi_{t}+F\lvert \nabla \Psi \rvert=0$
+		- Practical aspects:
+			- $\Psi$ only needs to be known close to the level-set
+			- $\Psi$ is usually chosen as a signed distance function:
+			  $-d(x,\Gamma)$, inside $\Gamma$; $d(x,\Gamma)$ outside $\Gamma$
+			- $\Psi$ can be constructed using distance transform or fast marching
+			- narrow band algorithm (update $\Psi$ in each step)
+			- numerical scheme: fixed grid, multigrid
+	- Variational methods:
+		1. Define the best segmentation of an image as the local minima to an energy functional, $E[\Omega]=\int _{\Omega} f(\Omega) \, dx$
+		2. Write down the Euler-Lagrange equations, giving $dE[\Omega]=0$
+		3. Introduce a dummy variable t (time) and solve $\Phi_{t}=dE(\Phi)$
+			- $\Phi$ is a level set function corresponding to $\Omega$
+		- Classical Chan-Vese Model:
+			- Divide the image I(x) into two subsets $D_{0},D_{1}$ such that the following segmentation functional is minimized, ![[Pasted image 20251119171219.png|400]]
+				- $\mu_{0},\mu_{1}$ are constant image intensities on $D_{0},D_{1}$
+			- If the subsets are fixed, then the optimal parameter values are given by $\mu_{i}^*=\mu_{i}^*(D_{i})=\frac{\int D_{i} I(x) \, dx}{\int_{D_{i}} \, dx}$
+			- May be sensitive to outliers.
+		- Reduced functional:
+			- $\hat{J}(\Gamma)=J(\Gamma,\mu^*(\Gamma))$
+			- Solutions is found by gradient descent,
+			  ![[Pasted image 20251119171513.png|300]]
+		- Together:
+			- Minimize a functional of the Chan-Vese form,![[Pasted image 20251119171629.png]]
+				- Where we match $c_{1},c_{2}$ to the constant image intensities inside and outside the curve, and the last term denotes a measure on the curve.
+			- ![[Pasted image 20251119171734.png|400]]
+				- ...?
+- Conclusion:
+	- Toolbox of different segmentation algorithms
+	- Each algorithm has to be adapted to the specific problem
+	- Usually critical parameters have to be selected or estimated
+	- Usually several different methods have to be tested
+- Fast marching
+- Level-set methods
+- Variational methods
+- Chan-Vese-segmentation
+- Discussion
 
 **Lecture 6 - Segmentation III (Modern segmentation methods)**
+- Representing shapes:
+	- A continous curve representing the contour of the object,
+		- Result from segmentation algorithm
+		- Needs to be represented in some way, e.g. Fourier series, splines, interpolation
+	- A sampled set of points along the contour
+		- Compact and simple
+		- A continuous curve can be obtained by interpolation
+		- Suitable for shape models
+		- Needs to be evenly distributed
+		- Advantageous if adapted to the shape
+- Building a shape model:
+	- We have a set of M examples of shapes
+		- E.g. a number of pre-segmented shapes
+	- We select N landmark points along the shape boundary $\mathbf{X}=(\mathbf{x_{1}},\dots,\mathbf{x_{N}})$
+		- Each point contains the coordinates $\mathbf{x_{j}}=(x_{j},y_{j})$
+	- We assume we know the correspondence between the different points in the different shapes
+	- Comment on notation: The order of points in $\mathbf{x}$ are not important as long as one is consistent when transfering between the vector $\mathbf{x}$ and coordinates $(x_{j}, y_{j})$
+		- Both $\mathbf{X}=[x_{1},y_{1},x_{2},y_{2},\dots]$ and $\mathbf{X}=[x_{1}x_{2},\dots x_{N},y_{1},y_{2},\dots,y_{N}]$ work.
+	- Aligning the data:
+		- The data needs to be aligned and evenly distributed
+			- Evenly distributed is handled in Image Analaysis course
+		- Alignment can be made by finding the best similarity transformation.
+			- Done!
+		- Algorithm for alignment:
+			1. Align each shape to the first
+			2. Calculate the mean of the t ransformed shapes (the mean value for each point)
+			3. Align the mean shape to the first (to guarantee convergence)
+			4. Align each shape to the mean shape
+			5. Update the mean shape
+			6. Iterate 3 to 5 until convergence (aka mean shape doesn't change significantly from previous iteration)
+			- Mean shape is $\mathbf{\bar{x}}_{j}=\frac{1}{M}\sum_{i=1}^M \mathbf{x}^i_{j}$
+	- The calculate the covariance matrix of the displacements from the mean shape,
+	  $\mathbf{dX}^i=\mathbf{X}^i-\mathbf{\bar{X}}$
+	  Covariance matrix = $S=\frac{1}{M}\sum_{i=1}^M\mathbf{dX}^i(\mathbf{dX}^i)^T$
+	- Take the eigenvectors and values of S, $S\mathbf{P}^i=\lambda_{i}\mathbf{P}^i$
+		- Eigenvectors are modes of variation
+			- The eigenvector corresponding to the highest eigenvalue describes the most likely variation in the training data
+			- Note that we have 2N eigen vectors due to 2 coordinates per point
+		- Eigenvalues are significance of variation
+			- We assume they are ordered decreasingly
+	- We express the shapes with the eigenvectors,
+	  $\mathbf{X}=\mathbf{\bar{X}}+\mathbf{Pb}$
+		- $\mathbf{b}$ are the coordinates in the eigenvector basis $\mathbf{P}$
+		- Coordinates in $\mathbf{b}$ can be interpreted as the amount of variation in the different variation modes
+	- Notation... again:
+		- $\mathbf{X}=[x_{1}y_{1}x_{2}y_{2},\dots]^T$
+			- same for $\mathbf{P}^i$
+		- while $\mathbf{x}=\begin{bmatrix} x_{1} & x_{2}\dots \\ y_{1} & y_{2} \dots \end{bmatrix}$
+			- same for $\mathbf{p}^i$
+	- Visualizing the modes:
+		- Plot the mean shape $\mathbf{\bar{x}}$
+		- Plot the mean shape plus/minus a suitable multiple, k, of each mode, $\mathbf{\bar{x}} \pm k \mathbf{p}_{i}$
+			- Usually we select $k=2\sqrt{ \lambda_{i} }$
+			- It is also useful to plot for several $k\sqrt{ \lambda_{i} }\mathbf{p}_{i}$ in the same figure
+				- Note the 2 taken away from above
+	- We select only the first t modes of variation, since they contain the majority of information,
+	  $\mathbf{P}_{t}=(\mathbf{P}^1\mathbf{P}^2\dots \mathbf{P}^t)$
+	  $\mathbf{b}_{t}=[b_{1}b_{2}\dots b_{t}]^T$
+		- How do we select t?
+			- Look at the goemetric appearance of each mode and select relevant ones
+			- Determine how much energy you want to preserve
+				- Total energy is $E=\sum_{i=1}^{2N}\lambda_{i}$
+				- Relative contribution for each mode is $\lambda_{i} / E$
+				- Contribution of the first t modes is $E_{t}=\sum_{i=1}^t\lambda_{i}$
+				- Select for isntance t such that $E_{t} / E = 95\%$
+	- We approximate,
+	  $\mathbf{X} \approx \mathbf{\bar{X}}+\mathbf{P}_{t}\mathbf{b}_{t}$
+	- How do we find $\mathbf{b}_{t}$?
+		- Form $\mathbf{X}-\mathbf{\bar{X}} \approx \mathbf{P}_{t}\mathbf{b}_{t}$
+		- Multiply by transpose of $\mathbf{P}_{t}$ and solve least squares,
+		  $\mathbf{b}_{t}=\mathbf{P}_{t}^{\dagger}(\mathbf{X}-\mathbf{\bar{X}})$
+	- In the end we have the shape:
+		- $\mathbf{Y}=T_{s,R,t}(\mathbf{\bar{X}}+\mathbf{P}_{t}\mathbf{b}_{t})$
+			- $T_{s,R,t}(x)=sR(x+t)$
+- Segmentation using a shape model:
+	- Given a shape model and an imgae with an edge map
+		- Mean shape and transformation matrix of shape model are known
+	- We want to optimize some criteria over estimated pose and shape parameters
+	- Algorithm:
+		- Initialize $s,R,\mathbf{t},\mathbf{b}_{t}$
+			-  This gives initial shape $\mathbf{X_{0}}$
+				- I think this means $\mathbf{X}_{0}=\mathbf{Y}=T_{s,R,t}(\mathbf{\bar{X}}+\mathbf{P}_{t}\mathbf{b}_{t})$ above
+		- Find edges: At each landmark find the closest edge point orthogonal to the countour, giving the points $\mathbf{Y}=(\mathbf{y}_{1},\dots,\mathbf{y}_{N})$
+		- Adjust pose: Adjust pose parameter to the best fit of the new $\mathbf{Y}$ points based on the current estiamte of $\mathbf{b}_{t}$
+			- I.e. we do the similarity transform from $\mathbf{X}$ to $\mathbf{Y}$
+		- Adjust shape parameters:
+			- Transfer the new points $\mathbf{Y}$ back to the shape space using the inverse similarity transformation, giving the new shape space points $\mathbf{X}$
+				- Inverse similairty transform: $\hat{y}=s^{-1}R^T(y-t)$
+			- Calculate displacement vector $\mathbf{dX}=\mathbf{X-\bar{X}}$
+			- Update shape parameter $\mathbf{b}$
+		- Recompute shape: Calculate $\mathbf{X}$
+		- Repeat until convergence
+	- We need to solve:
+		- $\mathbf{X+dX}=\mathbf{\bar{X}+P_{t}(b_{t}+db_{t})}$
+		- Using $\mathbf{X=\bar{X}+P_{t}b_{t}}$ gives $\mathbf{db_{t}=P_{t}^T dX}$
+		- Iterate until convergence...
+	- Initialization:
+		- Segment based on the edge map using any segmentation algorithm
+		- Estimate the pose parameters using Procrustes
+		- Estimate the shape parameters using $\mathbf{b}_{t}=\mathbf{P}_{t}^T(\mathbf{X}-\mathbf{\bar{X}})$
+			- Note: it could be a good idea to restrict the shape parameters according to $-3\sqrt{ \lambda_{t} }\leq \mathbf{b}_{t}\leq 3\sqrt{ \lambda_{t} }$
+		- Alternative initialization:
+			- Segment based on simple registration e.g. thresholding
+			- Then calculate the centre of gravity and the moments and axes of intertia for the binary image obtained
+			- Then select the transformation parameters such that the centre of gravity, axes of inertia and total area coincide with a transformed mean shape
+			- Use the transformation parameters along with $\mathbf{b}=0$ as an initialization
+			- Points along the segmented shape are now easily obtained from the transformed points on the mean shape.
+		- Example with grayscale image:
+			1. Use transformed mean shape as a first approximation
+			2. Determine profiles for each model point
+			3. Compare gray-levels to obtain new points, Y
+			4. Estimate the model parameters corresponding to the new points by minimizing $\lvert \mathbf{Y}-T_{x_{tr}y_{tr},s,\theta}(\mathbf{\bar{x}+P_{t}b}) \rvert^{2}$
+			5. Iterate from 2 until convergence.
+			- Something about a scale pyramid

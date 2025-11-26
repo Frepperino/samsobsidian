@@ -268,3 +268,6 @@ Assume zero mean field for the first lab
 		- We get, ![[Pasted image 20251113150457.png|450]]
 			- P is the same as before
 		- REML can be seen as the marginal likelihood when we integrate out $\beta$ from the likelihood $\int p(Y,\beta|\Psi) \, d\beta$. In comparison, in profile likelihood we substitute $\beta$ with it's ML estiamte $\beta(\Psi)$ instead.
+
+**Lecture 5**
+- 
